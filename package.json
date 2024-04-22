@@ -1,6 +1,6 @@
 {
   "name": "@rotender/react-native-image-selfie-segmentation",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "React Native Image Selfie Segmentation",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
