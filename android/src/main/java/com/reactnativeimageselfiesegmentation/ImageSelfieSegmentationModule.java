@@ -86,8 +86,7 @@ public class ImageSelfieSegmentationModule extends ReactContextBaseJavaModule {
       inputBitmap,
       maxSize,
       maxSize,
-      // isRotated(inputRotation),
-      false,
+      isRotated(inputRotation),
       false
     );
 
@@ -100,8 +99,7 @@ public class ImageSelfieSegmentationModule extends ReactContextBaseJavaModule {
       backgroundBitmap,
       inputWidth,
       inputHeight,
-      // isRotated(backgroundRotation),
-      false,
+      isRotated(backgroundRotation),
       true
     );
 
@@ -335,7 +333,8 @@ public class ImageSelfieSegmentationModule extends ReactContextBaseJavaModule {
    * @return
    */
   private Boolean isRotated(int rotation) {
-    return rotation == 90 || rotation == 270;
+    // return rotation == 90 || rotation == 270;
+    return false;
   }
 
   /**
