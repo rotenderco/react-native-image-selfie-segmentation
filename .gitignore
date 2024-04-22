@@ -29,6 +29,12 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
+# VS Code
+.history/
+.vscode/
+.env.local
+.env.development.local
+
 # Android/IJ
 #
 .classpath
