@@ -19,10 +19,10 @@ def safeExtGet(prop, fallback) {
 }
 
 android {
-    compileSdkVersion safeExtGet('ImageSelfieSegmentation_compileSdkVersion', 29)
+    compileSdkVersion safeExtGet('ImageSelfieSegmentation_compileSdkVersion', 34)
     defaultConfig {
-        minSdkVersion safeExtGet('ImageSelfieSegmentation_minSdkVersion', 16)
-        targetSdkVersion safeExtGet('ImageSelfieSegmentation_targetSdkVersion', 29)
+        minSdkVersion safeExtGet('ImageSelfieSegmentation_minSdkVersion', 26)
+        targetSdkVersion safeExtGet('ImageSelfieSegmentation_targetSdkVersion', 34)
         versionCode 1
         versionName "1.0"
 
@@ -37,8 +37,8 @@ android {
         disable 'GradleCompatible'
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
@@ -55,6 +55,8 @@ repositories {
 
 dependencies {
     //noinspection GradleDynamicVersion
-    implementation "com.facebook.react:react-native:+"  // From node_modules
-    implementation 'com.google.mlkit:segmentation-selfie:16.0.0-beta4'
+    implementation("com.google.guava:guava:33.1.0-android")
+    implementation("com.facebook.react:react-android:0.73.6") // From node_modules
+    implementation("com.facebook.react:flipper-integration:0.73.6")
+    implementation("com.google.mlkit:segmentation-selfie:16.0.0-beta5")
 }
