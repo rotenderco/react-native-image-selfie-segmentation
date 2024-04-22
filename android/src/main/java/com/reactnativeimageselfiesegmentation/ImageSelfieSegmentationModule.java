@@ -81,36 +81,22 @@ public class ImageSelfieSegmentationModule extends ReactContextBaseJavaModule {
       return;
     }
 
-    // resize bitmaps based on maxSize and input image
-    Bitmap inputResizedBitmap = resize(
-      inputBitmap,
-      maxSize,
-      maxSize,
-      isRotated(inputRotation),
-      false
-    );
-
-    int inputWidth = isRotated(inputRotation) ? inputResizedBitmap.getHeight() :
-      inputResizedBitmap.getWidth();
-    int inputHeight = isRotated(inputRotation) ? inputResizedBitmap.getWidth() :
-      inputResizedBitmap.getHeight();
-
     Bitmap backgroundResizedBitmap = resize(
       backgroundBitmap,
-      inputWidth,
-      inputHeight,
+      inputBitmap.getWidth(),
+      inputBitmap.getHeight(),
       isRotated(backgroundRotation),
       true
     );
 
     // convert Bitmaps to Input Images
-    InputImage inputImage = InputImage.fromBitmap(inputResizedBitmap, inputRotation);
+    InputImage inputImage = InputImage.fromBitmap(inputBitmap, inputRotation);
     InputImage backgroundImage = InputImage.fromBitmap(backgroundResizedBitmap, backgroundRotation);
 
     // return an error if input image is larger than background
-    if (inputWidth > backgroundResizedBitmap.getWidth() ||
-      inputHeight > backgroundResizedBitmap.getHeight()) {
-      promise.reject("images", "Input image " + inputWidth + "x" + inputHeight
+    if (inputBitmap.getWidth() > backgroundResizedBitmap.getWidth() ||
+      inputBitmap.getHeight() > backgroundResizedBitmap.getHeight()) {
+      promise.reject("images", "Input image " + inputBitmap.getWidth() + "x" + inputBitmap.getHeight()
         + " is smaller than background image " + backgroundResizedBitmap.getWidth()
         + "x" + backgroundResizedBitmap.getHeight());
 
@@ -333,8 +319,7 @@ public class ImageSelfieSegmentationModule extends ReactContextBaseJavaModule {
    * @return
    */
   private Boolean isRotated(int rotation) {
-    // return rotation == 90 || rotation == 270;
-    return false;
+    return rotation == 90 || rotation == 270;
   }
 
   /**
